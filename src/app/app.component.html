@@ -1,0 +1,63 @@
+<div class="main">
+  <h1 class="title">Password Generator</h1>
+
+  <div class="field">
+    <label class="label">Length</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="length" />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="includeUpperCase" />
+      Uppercase
+    </label>
+  </div>
+
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="includeLowerCase" />
+      Lowercase
+    </label>
+  </div>
+
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="includeNumbers" />
+      Numbers
+    </label>
+  </div>
+
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="includeSymbols" />
+      Symbols
+    </label>
+  </div>
+
+  <div class="control field">
+    <button
+      class="button is-link"
+      (click)="generatePassword()"
+      [disabled]="
+        !(
+          this.length &&
+          (this.includeUpperCase ||
+            this.includeLowerCase ||
+            this.includeNumbers ||
+            this.includeSymbols)
+        )
+      "
+    >
+      Generate
+    </button>
+  </div>
+
+  <div class="field" *ngIf="password">
+    <label class="label">Generated Password</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="password" />
+    </div>
+  </div>
+</div>
